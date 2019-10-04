@@ -11,5 +11,13 @@
             <li> Correo electronico: <em>maria.marcos@autom.uva.es</em></li>
             <li> Pagina de LinkedIn: <a href="https://www.linkedin.com/in/mar%C3%ADa-marcos-n%C3%BA%C3%B1ez-7559b8b8/">Maria Marcos</a></li>
         </ul>
+
+        {% for post in posts %} 
+        <div>
+            <p> publicado: {{ post.published_date }}</p>
+            <h2><a href="">{{post.title}}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+        {% endfor %}
     </body>
 </html>
