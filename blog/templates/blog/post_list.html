@@ -1,23 +1,13 @@
-<html>
-    <head>
-        <title>MPMN blog</title>
-    </head>
-    <body>
-        <h1>Este es mi primer blog</h1>
-        <p>Blog creado en mi primer taller de django girls.
-             <strong> Y mañana la PyConEs</strong></p>
-        <h2>Informacion personal</h2>
-        <ul>
-            <li> Correo electronico: <em>maria.marcos@autom.uva.es</em></li>
-            <li> Pagina de LinkedIn: <a href="https://www.linkedin.com/in/mar%C3%ADa-marcos-n%C3%BA%C3%B1ez-7559b8b8/">Maria Marcos</a></li>
-        </ul>
+{% extends 'blog/base.html' %}
 
-        {% for post in posts %} 
-        <div>
-            <p> publicado: {{ post.published_date }}</p>
-            <h2><a href="">{{post.title}}</a></h2>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
             <p>{{ post.text|linebreaksbr }}</p>
+            <div class="date">
+                <p><em>{{ post.published_date }}</em></p>
+            </div>
         </div>
-        {% endfor %}
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
